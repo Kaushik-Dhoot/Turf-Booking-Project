@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for message in messages %}
+    <div class="alert alert-primary alert-dismissable fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<!-- <h1>
+
+    Hello {{request.user.first_name}}
+
+</h1> -->
+
+
+<!-- <div class="container" style="display: flex; justify-content:center; align-items:center;"> -->
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Profile</h3>
+                </div>
+                <div class="card-body">
+                    
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>First name</th>
+                                <td>{{request.user.first_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Last name</th>
+                                <td>{{request.user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone Number</th>
+                                <td>{{request.user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Bookings</th>
+                                <td>{{request.user.booking_count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock body %}

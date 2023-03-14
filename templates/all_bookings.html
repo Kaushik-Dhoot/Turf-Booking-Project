@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+{% for message in messages %}
+    <div class="alert alert-primary alert-dismissable fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<div class="container-fluid">
+    <div class='row'>
+        <div class='col-md-12 mt-2' >
+            <h3 class = 'alert alert-success'>All Bookings</h3>
+        </div>
+
+        <table class="table table-bordered border-dark">
+
+            <thead>
+                <tr>
+                    <th class="col-md-3"><b>Name of Booking</b></th>
+                    <th class="col-md-3"><b>Mobile Number</b></th>
+                    <th class="col-md-3"><b>End Date and Time</b></th>
+                    <th class="col-md-3"><b>End Date and Time</b></th>
+                    <th class="col-md-3"><b>Total Amount</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in all_booking %}
+                <tr>
+                    <td><b>{{b.name}}</b></td>
+                    <td><b>{{b.phone}}</b></td>
+                    <td><b>{{b.start_time}}</b></td>
+                    <td><b>{{b.end_time}}</b></td>
+                    <td><b>{{b.total}}</b></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="container col-md-3">
+            <h4>Total Revenue : {{income}}</h4>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock body %}

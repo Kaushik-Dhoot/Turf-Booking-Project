@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="alert alert-primary alert-dismissable fade show" role="alert">
+  <b>Note:</b> <strong>₹80 will be charged for every new cricket ball including first one.</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<table class="table text-center" style='margin-top:50px'>
+    <thead class='table-light'>
+      <tr>
+        <th class='table-dark ' style='height : 100px; padding:15px;' scope="col">Day \ Time</th>
+        <th class='table-dark ' style='height : 100px; padding:15px;' scope="col">6 AM - 12 PM</th>
+        <th class='table-dark ' style='height : 100px; padding:15px;' scope="col">12 PM - 6 PM</th>
+        <th class='table-dark ' style='height : 100px; padding:15px;' scope="col">6 PM - 6 AM </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class='table-dark' style='height : 100px; padding : 15px;' scope="row">Weekday</th>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>800</b></td>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>700</b></td>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>900</b></td>
+      </tr>
+      <tr>
+        <th class='table-dark' style='height : 100px; padding : 15px;' scope="row">Weekend</th>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>900</b></td>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>800</b></td>
+        <td class='table-secondary' style='height : 100px; padding : 15px;' ><b>1000</b></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+{% endblock body %}

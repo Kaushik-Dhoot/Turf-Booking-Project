@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for message in messages %}
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<div class='container py-4 col-md-8'>
+
+    <h1 class='text-center mb-3'>Make A Booking</h1>
+
+    <form method='POST'  action='/booking' class='row g-3' style ='display:flex; justify-content:center; align-items : center;'>
+      {% csrf_token %}
+      
+      {% if user.is_superuser %}
+      <div class="form-floating mb-3 col-md-8">
+        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name for Booking">
+        <label for="floatingInput">Full Name</label>
+      </div>
+      
+      <div class="form-floating mb-3 col-md-8">
+        <input type="text" name='phone' id="form3Example3c" placeholder='Enter 10 Digit Mobile Number' class="form-control" maxlength='10' />
+        <label class="form-label" for="form3Example3c">Mobile Number</label>
+      </div>
+      {% endif %}
+
+      <div class="form-floating mb-3 col-md-8">
+        <input type="date" name='sdate' id="form3Example3c" placeholder='Select Date of Booking' class="form-control"  />
+        <label class="form-label" for="form3Example3c">Start Date of Booking</label>
+      </div>
+
+      <div class="form-floating mb-3 col-md-8">
+        <input type="time" step="3600" name='stime' id="form3Example3c" placeholder='Start Time of Booking' class="form-control"  />
+        <label class="form-label" for="form3Example3c">Start Time</label>
+      </div>
+
+      {% comment %} <div class="form-floating mb-3 col-md-8">
+        <input type="date" name='edate' id="form3Example3c" placeholder='Select Date of Booking' class="form-control"  />
+        <label class="form-label" for="form3Example3c">End Date of Booking</label>
+      </div> {% endcomment %}
+
+      <div class="form-floating mb-3 col-md-8">
+        <input type="time" step="3600" name='etime' id="form3Example3c" placeholder='Start Time of Booking' class="form-control"  />
+        <label class="form-label" for="form3Example3c">End Time</label>
+      </div>
+    
+      <button type='submit' class='btn btn-primary col-md-6'>Submit</button>
+    
+    </form>
+
+</div>
+
+{% endblock body %}
+
+

@@ -271,20 +271,10 @@ def equipment (request):
     return render(request,'equipment.html')
 
 
-def sendotp(phone):
-    # sid = 'AC084b5688bec2a5207f2ffdd6e095e941'
-    # auth_id = 'dc163abc5da55417accbedeaaed06327'
-    # t_number = '+18585445812'
-    # client = Client(sid,auth_id)
-    # text = client.messages.create(
-    #     body = f'Your OTP is {otp} \n- Team Greenfield',
-    #     from_ = t_number,
-    #     to = f'+91{phone}'
-    # )
-    sid = 'AC084b5688bec2a5207f2ffdd6e095e941'
-    auth_id = 'dc163abc5da55417accbedeaaed06327'
-    v_sid = 'VA9bd0ecb8564389a81892f8142b96919b'
-    # v_sid = 'MG6dffb8fe6222674fa6e2fd5e175b15f0'
+def sendotp(phone):)
+    sid = 'Twilio_sid'
+    auth_id = 'Twilio_auth_key'
+    v_sid = 'Twilio_verification_id'
     t_client = Client(sid,auth_id)
 
     verification = t_client.verify.services(v_sid) \
@@ -294,16 +284,11 @@ def sendotp(phone):
 
 
 def send_conf(request,from_,to_,otp):
-    sid = 'AC084b5688bec2a5207f2ffdd6e095e941'
-    auth_id = 'dc163abc5da55417accbedeaaed06327'
-    t_number = '+18585445812'
+    sid = 'Twilio_sid'
+    auth_id = 'Twilio_auth_key'
+    t_number = 'Twilio_phone_number'
     phone = request.user.phone
     client = Client(sid,auth_id)
-    # text1 = client.messages.create(
-    #     body = f'Booking Confirm from {from_} to {to_} \n Otp for booking is {otp} \n- Team Greenfield',
-    #     from_ = t_number,
-    #     to = f'+91{phone}'
-    # )
     text = client.messages.create(
         body = f'Booking Confirm from {from_} to {to_}. \n Otp for booking is {otp} \n- Team Greenfield',
         from_ = t_number,
@@ -312,7 +297,6 @@ def send_conf(request,from_,to_,otp):
 
 
 def verifyotp(request):
-    # return render(request,'verifyotp.html')
     global phone
     global otp
 
@@ -320,15 +304,14 @@ def verifyotp(request):
         eotp = request.POST.get('otp')
         print(eotp)
         print(type(eotp))
-        sid = 'AC084b5688bec2a5207f2ffdd6e095e941'
-        auth_id = 'dc163abc5da55417accbedeaaed06327'
-        v_sid = 'VA9bd0ecb8564389a81892f8142b96919b'
-        # v_sid = 'MG6dffb8fe6222674fa6e2fd5e175b15f0'
+        sid = 'Twilio_sid'
+        auth_id = 'Twilio_auth_key'
+        v_sid = 'Twilio_verification_id'
         t_client = Client(sid,auth_id)
         check = t_client.verify.services(v_sid) \
                             .verification_checks \
                                 .create(to=f'+91{phone}',code=eotp)
-        # if eotp == otp:
+        
         if check.status == 'approved':
             usr = User.objects.get(phone = phone )
             usr.phone_verified = True

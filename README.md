@@ -6,4 +6,6 @@ add your Twilio authentication key, Virtual Id , twilio number in accounts/views
 
 
 to run the project use:
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
